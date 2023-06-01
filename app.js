@@ -19,7 +19,7 @@ app.get("/api/movies", getMovies);
 app.patch("/api/movies", editMovie);
 app.delete("/api/movies/:movie_id", deleteMovie);
 
-app.get("/api/movies/single/:movie_id", getSingleMovie);
+app.get("/api/movies/:movie_id", getSingleMovie);
 
 // Starting the server
 
