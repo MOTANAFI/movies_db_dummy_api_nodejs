@@ -38,6 +38,19 @@ const editMovie = (req, res) => {
       return;
     }
 
+    const checkIfExists = JSON.parse(data).filter(
+      (item) => item.id == movie_id
+    );
+
+    if (!checkIfExists || checkIfExists.length < 1) {
+      res.status(400).json({
+        status: "failed",
+        message: "Movie not found! Please check movie id!",
+      });
+
+      return;
+    }
+
     const modifiedMovieData = JSON.parse(data).map((item) => {
       if (item.id == movie_id) {
         return {

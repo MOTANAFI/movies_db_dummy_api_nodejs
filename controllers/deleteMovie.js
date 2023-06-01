@@ -38,6 +38,19 @@ const deleteMovie = (req, res) => {
       return;
     }
 
+    const checkIfExists = JSON.parse(data).filter(
+      (item) => item.id == movie_id
+    );
+
+    if (!checkIfExists || checkIfExists.length < 1) {
+      res.status(400).json({
+        status: "failed",
+        message: "Movie not found! Please check movie id!",
+      });
+
+      return;
+    }
+
     const all_movies_except_the_provided_id_to_delete = JSON.parse(data).filter(
       (movie) => movie.id && movie.id.toString() !== movie_id.toString()
     );
