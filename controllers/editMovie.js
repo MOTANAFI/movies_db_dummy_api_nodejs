@@ -2,7 +2,7 @@ const fs = require("fs");
 const jsonChecker = require("./jsonChecker");
 
 const editMovie = (req, res) => {
-  const { movie_id, movie_name, info } = req.body;
+  const { movie_id, movie_name, info, rating } = req.body;
 
   try {
     if (!movie_id) throw "Movies id is required";
@@ -57,7 +57,7 @@ const editMovie = (req, res) => {
           id: item.id,
           movie_name: movie_name ? movie_name : item.movie_name,
           info: info ? info : item.info,
-          rating: item.rating,
+          rating: rating ? rating : item.rating,
         };
       } else {
         return item;
